@@ -1,0 +1,43 @@
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.ipynb_checkpoints/
+
+# ---------- CMake / build artifacts ----------
+build/
+Build/
+*-build/
+_build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CTestTestfile.cmake
+Makefile
+install_manifest.txt
+
+# ---------- 3D Slicer scenes & medical data ----------
+# Avoid accidentally committing patient CT / segmentation data.
+*.mrml
+*.mrb
+*.nrrd
+*.seg.nrrd
+*.nii
+*.nii.gz
+*.nhdr
+*.mha
+*.mhd
+*.raw
+*.dcm
+DICOM/
+# To intentionally commit a small de-identified test dataset:
+#   git add -f path/to/file
+
+# ---------- OS / editor ----------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
