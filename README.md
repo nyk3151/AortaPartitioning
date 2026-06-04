@@ -4,11 +4,12 @@ A [3D Slicer](https://www.slicer.org/) scripted module that partitions an aortic
 segmentation into **vertebral-level segments** and reports the volume of each
 segment per lumen (true / false).
 
-It is an improved version of *Aorta Zone Splitter*: the dividing landmarks are
-derived **automatically** from a vertebrae segmentation instead of being placed
+The dividing landmarks are derived **automatically** from a vertebrae segmentation instead of being placed
 by hand.
 
-<!-- ![screenshot](Resources/Screenshots/overview.png) -->
+<p align="center">
+  <img src="Resources/Screenshots/overview.png" width="700" alt="Aorta Partitioning overview">
+</p>
 
 ## Features
 
@@ -19,7 +20,7 @@ by hand.
 - The aorta is split along the **centerline (arc-length based)**, so the cuts
   follow vessel curvature rather than flat axial planes.
 - Segments are named by their bounding vertebrae and lumen type, e.g.
-  `Th8-Th12_TrueLumen`, `Th12-L4_FalseLumen`.
+  `Th9-Th12_TrueLumen`, `Th12-L2_FalseLumen`.
 - Per-segment volumes are exported to a results table.
 
 ## Requirements
@@ -49,11 +50,29 @@ the Slicer ExtensionsIndex; not covered here.)*
 
 ## Usage
 
+### Preparing the inputs
+
+- **Segmentations** can be created with the **Segment Editor**, or with automatic
+  AI tools such as
+  [TotalSegmentator](https://github.com/lassoan/SlicerTotalSegmentator),
+  [MONAI Auto3DSeg](https://github.com/lassoan/SlicerMONAIAuto3DSeg),
+  [nnU-Net](https://github.com/MIC-DKFZ/nnUNet), or
+  [MONAI Label](https://github.com/Project-MONAI/MONAILabel).
+  - For **aortic dissection**, create the aorta as a single segmentation with
+    label values **true lumen = 1** and **false lumen = 2**.
+  - For the **vertebrae**, TotalSegmentator or MONAI Auto3DSeg is convenient
+    (each vertebra is produced as a separate, named segment such as `Th8`, `Th12`, `L4`).
+- The **centerline** is created with the **Extract Centerline** module of the
+  [VMTK extension](https://github.com/vmtk/SlicerExtension-VMTK)
+  (install *SlicerVMTK* from the Extensions Manager).
+
+### Running the analysis
+
 1. Load the CT, the aorta segmentation, the centerline, and the vertebrae segmentation.
 2. Open **Vascular → Aorta Partitioning** and set the inputs:
    - **Aorta Segmentation** – the aorta (lumen encoded as label values: `1` = true lumen, `2` = false lumen).
    - **Centerline** – a markups curve or model running through the aorta.
-   - **Vertebrae Segmentation** – one segment per vertebra; segment names (e.g. `Th8`, `Th12`, `L4`) are used as landmark labels.
+   - **Vertebrae Segmentation** – one segment per vertebra; segment names (e.g. `Th6`, 'Th9', `Th12`, `L4`) are used as landmark labels.
    - **Reference CT Volume** – the original CT, used as the geometry reference for all conversions.
 3. Click **Run Analysis**.
 
@@ -80,14 +99,14 @@ the Slicer ExtensionsIndex; not covered here.)*
 ## Notes & limitations
 
 - Landmarks above the aortic arch (e.g. upper thoracic levels) may match the
-  centerline Z-height more than once; the module keeps the descending/distal
-  crossing, which is appropriate for sub-arch levels (Th8 / Th12 / L4).
+  centerline Z-height more than once; the module keeps the *descending/distal*
+  crossing, which is appropriate for sub-arch levels.
 - Proximal/Distal end labels are inferred from centerline endpoint Z-heights.
 
 ## License
 
 Released under the MIT License — see [`LICENSE`](LICENSE).
-*(Switch to Apache-2.0 if you prefer; update this section and the `LICENSE` file accordingly.)*
+
 
 ## Acknowledgements
 
@@ -96,4 +115,5 @@ Portions of this module were developed with the assistance of Claude (Anthropic)
 
 ## Contact
 
-nyk3151 — Tokyo Medical University
+Yu Nakano — Tokyo Medical University
+nyk3151@tokyo-med.ac.jp 
