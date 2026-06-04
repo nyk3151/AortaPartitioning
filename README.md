@@ -8,7 +8,7 @@ The dividing landmarks are derived **automatically** from a vertebrae segmentati
 by hand.
 
 <p align="center">
-  <img src="Resources/Screenshots/overview.png" width="700" alt="Aorta Partitioning overview">
+  <img src="AortaPartitioning/Resources/Screenshots/overview.png" width="700" alt="Aorta Partitioning overview">
 </p>
 
 ## Features
