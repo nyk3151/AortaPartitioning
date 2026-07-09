@@ -4,6 +4,8 @@ A [3D Slicer](https://www.slicer.org/) scripted module that partitions an aortic
 segmentation into **vertebral-level segments** and reports the volume of each
 segment per lumen (true / false).
 
+We proposed this method as **vertebral-based partitioning (VBP)** in our paper (https://doi.org/10.1007/s10278-026-02099-4).
+
 The dividing landmarks are derived **automatically** from a vertebrae segmentation instead of being placed
 by hand.
 
@@ -60,6 +62,8 @@ the Slicer ExtensionsIndex; not covered here.)*
   [MONAI Label](https://github.com/Project-MONAI/MONAILabel).
   - For **aortic dissection**, create the aorta as a single segmentation with
     label values **true lumen = 1** and **false lumen = 2**.
+  We have developed deep learning segmentation models (nnU-Net, SwinUNETR, and U-Mamba). 
+  The pre-trained models will be released soon.
   - For the **vertebrae**, TotalSegmentator or MONAI Auto3DSeg is convenient
     (each vertebra is produced as a separate, named segment such as `Th8`, `Th12`, `L4`).
 - The **centerline** is created with the **Extract Centerline** module of the
@@ -110,8 +114,26 @@ Released under the MIT License — see [`LICENSE`](LICENSE).
 
 ## Acknowledgements
 
-Developed for aortic dissection morphology analysis.
+This work was supported by the Japan Society for the Promotion of Science (JSPS) KAKENHI (grant number JP [25K15998]).
 Portions of this module were developed with the assistance of Claude (Anthropic).
+
+
+## Citation
+
+If you find this module or our work useful in your research, please cite our paper:
+
+**BibTeX:**
+```bibtex
+@article{nakano2026aorta,
+  title={AI-Based Segmental Volumetry of the Downstream Aorta in Aortic Dissection: End-to-End Versus Hybrid Strategies},
+  author={Nakano, Yu and Nishi, S. and Kojima, I. and others},
+  journal={Journal of Imaging Informatics in Medicine},
+  year={2026},
+  publisher={Springer},
+  doi={10.1007/s10278-026-02099-4},
+  url={[https://doi.org/10.1007/s10278-026-02099-4](https://doi.org/10.1007/s10278-026-02099-4)}
+}
+```
 
 ## Contact
 
