@@ -1,5 +1,10 @@
 # Aorta Partitioning
 
+[![Award](https://img.shields.io/badge/Award-JMAI%202026%20Excellent%20Presentation-gold?style=flat-square)](https://www.japan-medical-ai.org/jmaiaward)
+[![Paper](https://img.shields.io/badge/Paper-Published-blue?style=flat-square)](https://doi.org/10.1007/s10278-026-02099-4)
+[![Funding](https://img.shields.io/badge/Funding-KAKENHI_25K15998-brightgreen?style=flat-square)](https://kaken.nii.ac.jp/grant/KAKENHI-PROJECT-25K15998/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](https://opensource.org/licenses/MIT)
+
 A [3D Slicer](https://www.slicer.org/) scripted module that partitions an aortic
 segmentation into **vertebral-level segments** and reports the volume of each
 segment per lumen (true / false).
